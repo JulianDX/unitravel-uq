@@ -1,7 +1,6 @@
 package co.edu.uniquindio.unitravel;
 
-import co.edu.uniquindio.unitravel.entidades.Persona;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import co.edu.uniquindio.unitravel.entidades.Usuario;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,7 +14,7 @@ public class PersistenciaApplication {
 
         SpringApplication.run(PersistenciaApplication.class, args);
 
-        Persona persona = new Persona("2436","Pedro","pedro@hotmail.com");
+        Usuario persona = new Usuario("2436","Pedro","pedro@hotmail.com");
 
         Map<String, String> telefonos = new HashMap<>();
 
