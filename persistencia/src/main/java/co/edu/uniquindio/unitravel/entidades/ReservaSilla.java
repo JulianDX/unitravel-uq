@@ -6,28 +6,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Ciudad implements Serializable {
+public class ReservaSilla implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @Column(nullable = false, length = 100, unique = true)
-    private String nombre;
+    @PositiveOrZero
+    @Column(nullable = false)
+    private Double precio;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Cliente> clientes;
+    @ManyToOne
+    private Reserva reserva;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Hotel> hoteles;
+    @ManyToOne
+    private Silla silla;
 
 }

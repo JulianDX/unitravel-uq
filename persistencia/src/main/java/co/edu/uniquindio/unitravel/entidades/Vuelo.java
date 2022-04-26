@@ -14,20 +14,20 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Ciudad implements Serializable {
+public class Vuelo implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @Column(nullable = false, length = 100, unique = true)
-    private String nombre;
+    @Column(nullable = false, length = 20)
+    private String estado;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Cliente> clientes;
+    @Column(nullable = false, length = 50)
+    private String aerolinea;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Hotel> hoteles;
+    @OneToMany(mappedBy = "vueloSilla")
+    private List<Silla> sillas;
 
 }

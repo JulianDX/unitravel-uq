@@ -7,27 +7,26 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Ciudad implements Serializable {
+public class Queja implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @Column(nullable = false, length = 100, unique = true)
-    private String nombre;
+    @Column(nullable = false)
+    private String descripcion;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Cliente> clientes;
+    @ManyToOne
+    private Cliente cliente;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Hotel> hoteles;
+    @ManyToOne
+    private Hotel hotel;
 
 }

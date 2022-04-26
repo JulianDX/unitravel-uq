@@ -4,36 +4,42 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Prestamo implements Serializable {
+public class Comentario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
     @Column(nullable = false)
-    private LocalDateTime fechaPrestamo;
-    @Future
-    @Column(nullable = false)
-    private LocalDate fechaDevolucion;
+    private String comentario;
 
-    @ManyToMany
-    private List<Libro> libros;
+    @Column(nullable = false)
+    @Min(0)
+    @Max(5)
+    private int calificacion;
+
+    @Column(nullable = false)
+    private LocalDate fechaCalifiacion;
 
     @ManyToOne
-    private Usuario persona;
+    private Cliente cliente;
+
+    @ManyToOne
+    private Hotel hotel;
 
 }
