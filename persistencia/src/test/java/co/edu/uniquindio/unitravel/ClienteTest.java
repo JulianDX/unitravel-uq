@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unitravel;
 
-import co.edu.uniquindio.unitravel.entidades.Ciudad;
 import co.edu.uniquindio.unitravel.entidades.Cliente;
 import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
 import org.junit.jupiter.api.Assertions;
@@ -67,7 +66,7 @@ public class ClienteTest {
 
         List<Cliente> clientes = clienteRepo.findAll();
 
-        System.out.println(clientes);
+        clientes.forEach(System.out::println);
 
     }
 
@@ -78,6 +77,19 @@ public class ClienteTest {
         List<Cliente> clientes = clienteRepo.listarClientesPorNombre("Julian");
         clientes.forEach(System.out::println);
 
+        Assertions.assertEquals(1,clientes.size());
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarPorCedula(){
+
+        Optional<Cliente> cliente = clienteRepo.listarClientesPorCedula("111111");
+        System.out.println(cliente.get());
+
+        Assertions.assertNotNull(cliente);
+
     }
 
     @Test
@@ -86,6 +98,8 @@ public class ClienteTest {
 
         Optional<Cliente> clienteAutenticado = clienteRepo.Autenticacion("jfroa@hotmail.com","prueba123");
         System.out.println(clienteAutenticado.get());
+
+        Assertions.assertNotNull(clienteAutenticado);
 
     }
 

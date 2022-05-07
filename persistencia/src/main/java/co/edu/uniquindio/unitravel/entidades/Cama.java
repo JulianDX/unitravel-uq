@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,5 +23,8 @@ public class Cama implements Serializable {
 
     @Column(nullable = false, length = 50)
     private String tipo;
+
+    @ManyToMany(mappedBy = "cama")
+    private List<Habitacion> habitacion;
 
 }

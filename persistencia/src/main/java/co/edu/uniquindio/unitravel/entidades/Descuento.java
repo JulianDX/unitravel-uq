@@ -27,6 +27,7 @@ public class Descuento implements Serializable {
     @Max(75)
     private int descuento;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Hotel hotel;
 

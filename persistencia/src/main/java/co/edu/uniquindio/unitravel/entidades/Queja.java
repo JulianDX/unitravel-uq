@@ -23,9 +23,11 @@ public class Queja implements Serializable {
     @Column(nullable = false)
     private String descripcion;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Cliente cliente;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Hotel hotel;
 

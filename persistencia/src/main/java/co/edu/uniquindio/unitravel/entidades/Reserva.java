@@ -44,6 +44,7 @@ public class Reserva implements Serializable {
     @Column(nullable = false)
     private int cantidadPersonas;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Cliente cliente;
 

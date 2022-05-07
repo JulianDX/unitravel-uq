@@ -36,9 +36,11 @@ public class Comentario implements Serializable {
     @Column(nullable = false)
     private LocalDate fechaCalifiacion;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Cliente cliente;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Hotel hotel;
 

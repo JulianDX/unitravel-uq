@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(callSuper = true,onlyExplicitlyIncluded = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 public class Cliente extends Persona implements Serializable {
 
     @ToString.Exclude
@@ -34,6 +34,7 @@ public class Cliente extends Persona implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<Queja> quejas;
 
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Ciudad ciudad;
 

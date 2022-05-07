@@ -1,11 +1,9 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 @Entity
@@ -13,5 +11,9 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
 public class Administrador extends Persona implements Serializable {
+    public Administrador(String cedula, String nombre, @Email String email, String password) {
+        super(cedula, nombre, email, password);
+    }
 }

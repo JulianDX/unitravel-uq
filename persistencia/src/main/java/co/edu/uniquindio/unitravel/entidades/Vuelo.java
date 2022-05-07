@@ -30,4 +30,9 @@ public class Vuelo implements Serializable {
     @OneToMany(mappedBy = "vueloSilla")
     private List<Silla> sillas;
 
+    @ManyToOne
+    private Ciudad ciudadOrigen;
+
+    @ManyToOne
+    private Ciudad ciudadDestino;
 }
