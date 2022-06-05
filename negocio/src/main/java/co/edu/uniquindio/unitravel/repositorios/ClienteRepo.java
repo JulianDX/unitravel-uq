@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unitravel.repositorios;
 
 import co.edu.uniquindio.unitravel.entidades.Cliente;
+import co.edu.uniquindio.unitravel.entidades.Persona;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,9 +23,7 @@ public interface ClienteRepo extends JpaRepository<Cliente,String> {
     @Query("select c from Cliente c where c.cedula = :cedula")
     Optional<Cliente> listarClientesPorCedula(String cedula);
 
-    Optional<Cliente> findByEmail(String correo);
-
-    Optional<Cliente> findByEmailAndPassword(String correo, String password);
+    Persona findByEmail(String correo);
 
     @Override
     Page<Cliente> findAll(Pageable pageable);

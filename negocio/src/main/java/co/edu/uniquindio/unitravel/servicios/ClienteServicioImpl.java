@@ -1,10 +1,10 @@
 package co.edu.uniquindio.unitravel.servicios;
 
-import co.edu.uniquindio.unitravel.entidades.Cliente;
-import co.edu.uniquindio.unitravel.entidades.Comentario;
-import co.edu.uniquindio.unitravel.entidades.Hotel;
-import co.edu.uniquindio.unitravel.entidades.Reserva;
+import co.edu.uniquindio.unitravel.entidades.*;
+import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
+import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +14,13 @@ import java.util.Optional;
 public class ClienteServicioImpl implements ClienteServicio{
 
     private ClienteRepo clienteRepo;
+    private HotelRepo hotelRepo;
+    private CiudadRepo ciudadRepo;
 
-    public ClienteServicioImpl(ClienteRepo clienteRepo){
+    public ClienteServicioImpl(ClienteRepo clienteRepo, HotelRepo hotelRepo, CiudadRepo ciudadRepo){
         this.clienteRepo = clienteRepo;
+        this.hotelRepo = hotelRepo;
+        this.ciudadRepo = ciudadRepo;
     }
 
     @Override
@@ -33,6 +37,9 @@ public class ClienteServicioImpl implements ClienteServicio{
         if(buscarCorreo!=null){
             throw new Exception("Ya hay un usuario en el sistema con el correo: "+c.getEmail());
         }
+
+        StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+        c.setPassword(passwordEncryptor.encryptPassword(c.getPassword()));
 
         return clienteRepo.save(c);
     }
@@ -54,20 +61,8 @@ public class ClienteServicioImpl implements ClienteServicio{
         return clienteRepo.findById(cedula).orElse(null);
     }
 
-    @Override
-    public Cliente validarLogin(String email, String password) throws Exception {
-
-        Optional<Cliente> cliente = clienteRepo.findByEmailAndPassword(email, password);
-
-        if(cliente.isEmpty()){
-            throw new Exception("Email o contraseña incorrectos");
-        }
-
-        return cliente.get();
-    }
-
     public Cliente obtenerClienteEmail(String correo){
-        return clienteRepo.findByEmail(correo).orElse(null);
+        return (Cliente) clienteRepo.findByEmail(correo);
     }
 
     @Override
@@ -97,7 +92,23 @@ public class ClienteServicioImpl implements ClienteServicio{
     }
 
     @Override
-    public List<Hotel> buscarHotelNombre(String nombre) {
+    public List<Hotel> buscarHotelNombre(String nombre){
+        return hotelRepo.buscarHotelNombre(nombre);
+    }
+
+    @Override
+    public List<Hotel> listarHoteles() {
+        return hotelRepo.findAll();
+    }
+
+    @Override
+    public Reserva hacerReserva(Reserva reserva, List<Habitacion> habitaciones, Vuelo vuelo) throws Exception {
         return null;
     }
+
+    @Override
+    public Ciudad obtenerCiudad(Integer codigo) throws Exception {
+        return ciudadRepo.findById(codigo).orElseThrow(()-> new Exception("El código no existe"));
+    }
+
 }

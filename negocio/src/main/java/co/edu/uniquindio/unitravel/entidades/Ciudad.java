@@ -38,6 +38,8 @@ public class Ciudad implements Serializable {
     @ToString.Exclude
     private List<Vuelo> vuelosdestino;
 
+    private String imagen;
+
     public Ciudad(int codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;

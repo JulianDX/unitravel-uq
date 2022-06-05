@@ -21,8 +21,5 @@ public class Telefono implements Serializable {
     @Column(nullable = true)
     private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    Cliente cliente;
 
 }

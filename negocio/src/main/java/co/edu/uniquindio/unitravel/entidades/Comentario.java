@@ -25,6 +25,7 @@ public class Comentario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
+    @Lob
     @Column(nullable = false)
     private String comentario;
 

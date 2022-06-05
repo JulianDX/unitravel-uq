@@ -1,11 +1,10 @@
 package co.edu.uniquindio.unitravel.entidades;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
@@ -18,9 +17,10 @@ import java.util.List;
 @ToString(callSuper = true, onlyExplicitlyIncluded = true)
 public class Cliente extends Persona implements Serializable {
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "cliente")
-    private List<Telefono> telefonos;
+    @ToString.Include
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ElementCollection
+    private List<String> telefono;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "cliente")

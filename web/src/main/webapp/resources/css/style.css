@@ -1,0 +1,203 @@
+.pi.icon-menu{
+    font-size: 1.5rem;
+    width: 24px;
+    height: 24px;
+}
+
+.icono-p{
+    width: 50px;
+    margin-right: 10px;
+}
+
+.fondo-c{
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+}
+
+.color-principal{
+    background-color: #1a1f71;
+}
+
+.titulo-logo{
+    color: #482678;
+    font-size: 40px;
+    font-family: 'Impact';
+    text-transform: uppercase;
+}
+
+#busqueda_h .ui-inputtext{
+    width: 400px;
+}
+
+.contenedor-btn{
+    margin-top: 20px;
+}
+
+#crear_hotel_f .ui-inputfield.ui-widget, #crear_hotel_f .ui-selectonemenu.ui-widget {
+    width: 400px;
+}
+
+.imagen-hotel{
+    width: 100%;
+}
+
+body .ui-dataview .ui-dataview-content{
+    background: none;
+}
+
+.item-ciudad{
+    text-align: center;
+    position: relative;
+    border: none;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 9px -1px #42445A;
+    box-shadow: 2px 2px 9px -1px #42445A;
+    overflow: hidden;
+}
+
+.item-ciudad img{
+    width: 100%;
+    height: 100%;
+}
+
+.item-ciudad a{
+    color: black;
+    text-decoration: none;
+}
+
+.item-ciudad p{
+    font-size: 20px;
+    margin: 5px;
+}
+
+.img-ciudad{
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+
+body .ui-dataview .ui-dataview-header, .ui-dataview-row.ui-g{
+    background: none;
+}
+
+.ui-dataview-row{
+    background: white;
+    margin-bottom: 20px;
+}
+
+.ui-dataview-header h2{
+    display: inline-block;
+    color: black;
+}
+
+.imagen-default{
+    max-width: 80%;
+}
+
+.img-hab img{
+    max-width: 50%;
+}
+
+.ui-linkbutton a{
+    text-decoration: none;
+}
+
+.ui-inputtext{
+    width: 400px;
+}
+
+.bg-color{
+    background-color: white;
+}
+
+.text-purple{
+    font-weight: bold;
+    color: #482678;
+}
+
+.text-purple:hover{
+    color: rebeccapurple;
+}
+
+.here{
+    color: white;
+    background-color: #482678;
+    border-radius: 10px;
+}
+
+.here:hover{
+    color: white;
+}
+
+.card{
+    text-align: center;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15px;
+    border-bottom:2px solid dimgrey;
+    -webkit-box-shadow: 0 8px 6px -6px dimgrey;
+    -moz-box-shadow: 0 8px 6px -6px dimgrey;
+    box-shadow: 0 8px 6px -6px dimgrey;
+    margin-bottom: 10px;
+}
+
+.imagen-ciudad{
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    max-height: 300px;
+}
+
+.nombre-ciudad{
+    margin-top: 10px;
+}
+
+.btn-registro{
+    background-color: #482678;
+}
+
+body .ui-button{
+    background: #482678;
+    border: #482678;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+body .ui-button:hover{
+    background: #865FBD;
+    border: #865FBD;
+}
+
+.btn-light{
+    --bs-btn-bg: #482678;
+    --bs-btn-hover-bg: #865FBD;
+    --bs-btn-hover-color: white;
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.parrafo-ciudades{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.car-text{
+    text-decoration: none;
+    color: black;
+}
+
+.car-text:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.footer{
+    background-color: #482678;
+    color: white;
+}
+

@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,10 +21,15 @@ public class Caracteristica implements Serializable {
     @Column(nullable = false, unique = true, length = 100)
     private String nombre;
 
-    @ManyToMany
+    @Column(nullable = false, length = 2)
+    private String tipo;
+
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "caracteristicas")
     private List<Hotel> hoteles;
 
-    @ManyToMany
-    private List<Habitacion> habitacion;
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "caracteristicas")
+    private List<Habitacion> habitaciones;
 
 }

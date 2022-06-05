@@ -24,7 +24,7 @@ public class Cama implements Serializable {
     @Column(nullable = false, length = 50)
     private String tipo;
 
-    @ManyToMany(mappedBy = "cama")
+    @ManyToMany(mappedBy = "camas")
     private List<Habitacion> habitacion;
 
 }

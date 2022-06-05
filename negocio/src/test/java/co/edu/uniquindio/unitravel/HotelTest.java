@@ -52,4 +52,15 @@ public class HotelTest {
 
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerHotel(){
+
+        Hotel hotel = hotelRepo.findByNombreAndDireccion("Hotel Deluaxe","Carrera 5 #20-34");
+        System.out.println(hotel);
+
+        Assertions.assertNotNull(hotel);
+
+    }
+
 }

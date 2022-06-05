@@ -28,7 +28,7 @@ public class Descuento implements Serializable {
     private int descuento;
 
     @JoinColumn(nullable = false)
-    @OneToOne
+    @OneToOne(mappedBy = "descuento")
     private Hotel hotel;
 
 }

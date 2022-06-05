@@ -74,17 +74,6 @@ public class ClienteServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void login(){
-        try {
-            Cliente cliente = clienteServicio.validarLogin("aaaa@hotmail.com","email123");
-            Assertions.assertNotNull(cliente);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    @Sql("classpath:dataset.sql")
     public void enviarCorreoTest() {
         boolean estado = emailService.enviarCorreo("Prueba","Este es un mensaje","jfroap@uqvirtual.edu.co");
     }

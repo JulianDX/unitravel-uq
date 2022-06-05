@@ -22,12 +22,4 @@ public class Foto {
     @Column(nullable = false, unique = true, length = 100)
     private String url;
 
-    @JoinColumn(nullable = false)
-    @ManyToOne
-    private Hotel habitacion;
-
-    @JoinColumn(nullable = false)
-    @ManyToOne
-    private Hotel hotel;
-
 }
