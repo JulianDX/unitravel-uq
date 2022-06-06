@@ -37,7 +37,7 @@ public class Reserva implements Serializable {
     @Column(nullable = false)
     private Double precioTotal;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String estado;
 
     @Positive

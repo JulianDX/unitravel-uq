@@ -14,8 +14,6 @@ import java.util.List;
 @Repository
 public interface ReservaRepo extends JpaRepository<Reserva, Integer> {
 
-
-
     @Query("select count(r) from Reserva  r join r.habitaciones hb where hb.hotel.codigo = ?1 " +
             "and r.fechaInicio > current_date")
     int numeroReservasHotel(int codigoHotel);
@@ -23,7 +21,7 @@ public interface ReservaRepo extends JpaRepository<Reserva, Integer> {
     @Query("select sum(res.precioTotal) from Reserva res where res.cliente.cedula = ?1")
     double calcularReservasTotalUsuario(String cedulaCliente);
 
-    @Query("select res from Reserva res where res.cliente.cedula = :cedula and res.estado = 'A' and res.estado = 'Reservado'")
+    @Query("select res from Reserva res where res.cliente.cedula = :cedula ")
     List<Reserva>listaReservasCliente(String cedula);
 
     @Query("select res from Reserva  res where res.estado = 'A'")

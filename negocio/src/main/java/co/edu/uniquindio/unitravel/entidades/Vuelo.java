@@ -21,7 +21,7 @@ public class Vuelo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private String estado;
 
     @Column(nullable = false, length = 50)

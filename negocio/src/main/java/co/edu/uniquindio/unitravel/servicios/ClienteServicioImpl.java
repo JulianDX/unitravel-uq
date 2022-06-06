@@ -125,5 +125,10 @@ public class ClienteServicioImpl implements ClienteServicio{
         return clienteRepo.obtenerClienteDadoCorreo(correo);
     }
 
+    @Override
+    public List<Hotel> ListarHotelsPorNumeroEstrellas(Integer numeroEstrellas) {
+        return hotelRepo.listarHotelesPorNumeroEstrellas(numeroEstrellas);
+    }
+
 }
 

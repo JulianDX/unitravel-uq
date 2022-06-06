@@ -18,7 +18,7 @@
     <div id="content">
 
 
-        <p class="parrafo-ciudades">Hoteles por ciudad</p>
+        <p class="parrafo-ciudades">hoteles ciudad</p>
 
         <p:carousel value="#{inicioBean.ciudades}" var="ciudad" numVisible="3" circular="true" autoplayInterval="7000" >
             <div class="card">
@@ -29,11 +29,13 @@
             </div>
         </p:carousel>
 
-        <p>Hoteles recomendados</p>
 
         <h:form>
+            <p:dataView id="lista_h" value="#{inicioBean.hotelesRecomendados}" var="hotel" listIcon="pi pi-bars" gridIcon="pi pi-th-large">
 
-            <p:dataView id="lista_h" value="#{inicioBean.hoteles}" var="hotel" listIcon="pi pi-bars" gridIcon="pi pi-th-large">
+                <f:facet name ="header">
+                    <h2 class="m-2">Hoteles Recomendados </h2>
+                </f:facet>
 
                 <p:dataViewListItem>
 
@@ -52,8 +54,11 @@
                             <p:repeat value="#{hotel.caracteristicas}" var="car">
                                 <p:chip label="#{car.nombre}" styleClass="me-2"/>
                             </p:repeat>
+                            <h:outputText value="Numero Estrellas:" />
+                            <p:rating readonly="true" value="#{hotel.estrellas}"/>
                             <h:outputText value="Descripción:" />
                             <h:outputText value="#{hotel.descripcion}" />
+
                         </h:panelGrid>
                         </p:outputPanel>
                     </div>

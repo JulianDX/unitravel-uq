@@ -46,15 +46,9 @@
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.rol!=2 and seguridadBean.rol!=3}">
-                                <a href="#" class="nav-link text-purple" >
+                                <a href="/hoteles.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-tag bi d-block mx-auto mb-1 icon-menu"></i>
                                     Hoteles
-                                </a>
-                            </li>
-                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
-                                <a  href="#" class="nav-link text-purple" >
-                                    <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Mis reservas
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==3}" >
@@ -67,6 +61,18 @@
                                 <a  href="/admin/gestionar_destinos.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-map-marker bi d-block mx-auto mb-1 icon-menu"></i>
                                     Gestionar destinos
+                                </a>
+                            </li>
+                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
+                                <a  href="/mis_reservas.xhtml" class="nav-link text-purple" >
+                                    <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
+                                    Mis reservas
+                                </a>
+                            </li>
+                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
+                                <a  href="/crear_reservas.xhtml" class="nav-link text-purple" >
+                                    <i class="pi pi-fw pi-inbox bi d-block mx-auto mb-1 icon-menu"></i>
+                                    Crear Reserva
                                 </a>
                             </li>
                         </ul>

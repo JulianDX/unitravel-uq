@@ -40,7 +40,7 @@ public class Hotel implements Serializable {
     @NotBlank(message = "El teléfono del hotel no puede ser vacío")
     private String telefono;
 
-    @Column(length = 1, nullable = false, columnDefinition = "varchar(1) default 'A'")
+    @Column(length = 1, nullable = true, columnDefinition = "varchar(1) default 'A'")
     private String estado;
 
     @Column(nullable = false)
@@ -61,6 +61,7 @@ public class Hotel implements Serializable {
 
     @OneToMany(mappedBy = "hotel")
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Habitacion> habitaciones;
 
     @JoinColumn(nullable = false)

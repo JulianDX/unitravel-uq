@@ -29,7 +29,7 @@ insert into cliente values ("8448567378","julie@hotmail.com","Julie","z9qzumzOIp
 
 insert into administrador values ("1129388758","admin1@hotmail.com","Viviana","Y03ulClW2Ndj0c+Z2cwuZaVMc5ckhwsRAaqdfGYlQF2G7PsIemNNDuQNcvVfqRbu");
 insert into administrador values ("2994928833","admin2@hotmail.com","Jose","Y03ulClW2Ndj0c+Z2cwuZaVMc5ckhwsRAaqdfGYlQF2G7PsIemNNDuQNcvVfqRbu");
-insert into administrador values ("7289838829","admin2@hotmail.com","Carolina","Y03ulClW2Ndj0c+Z2cwuZaVMc5ckhwsRAaqdfGYlQF2G7PsIemNNDuQNcvVfqRbu");
+insert into administrador values ("7289838829","admin3@hotmail.com","Carolina","Y03ulClW2Ndj0c+Z2cwuZaVMc5ckhwsRAaqdfGYlQF2G7PsIemNNDuQNcvVfqRbu");
 
 insert into administrador_hotel values ("3884939384","adh@hotmail.com","Sebastian","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO");
 insert into administrador_hotel values ("4883884838","adh2@hotmail.com","Pedro","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO");

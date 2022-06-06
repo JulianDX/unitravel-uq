@@ -26,6 +26,9 @@ public class InicioBean implements Serializable {
     @Getter @Setter
     private List<Ciudad> ciudades;
 
+    @Getter @Setter
+    private List<Hotel> hotelesRecomendados;
+
     @Autowired
     private ClienteServicio clienteServicio;
 
@@ -34,8 +37,14 @@ public class InicioBean implements Serializable {
 
     @PostConstruct
     public void inicializar(){
-        hoteles = clienteServicio.listarHoteles();
-        ciudades = unitravelServicio.listarCiudades();
+        try {
+            hotelesRecomendados = clienteServicio.ListarHotelsPorNumeroEstrellas(4);
+            hoteles = clienteServicio.listarHoteles();
+            ciudades = unitravelServicio.listarCiudades();
+        } catch (Exception e) {
+
+
+        }
     }
 
     public String irRegistro(){

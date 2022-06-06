@@ -28,7 +28,7 @@ public class Caracteristica implements Serializable {
     @ManyToMany(mappedBy = "caracteristicas")
     private List<Hotel> hoteles;
 
-    @Column(length = 1, nullable = false, columnDefinition = "varchar(1) default 'A'")
+    @Column(length = 1, nullable = true, columnDefinition = "varchar(1) default 'A'")
     private String estado;
 
     @ToString.Exclude

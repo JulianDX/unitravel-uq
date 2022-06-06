@@ -1,11 +1,11 @@
 package co.edu.uniquindio.unitravel.bean;
 
 import co.edu.uniquindio.unitravel.entidades.*;
-import co.edu.uniquindio.unitravel.servicios.*;
+import co.edu.uniquindio.unitravel.servicios.AdministradorHotelServicio;
+import co.edu.uniquindio.unitravel.servicios.UnitravelServicio;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.io.IOUtils;
-import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,24 +33,19 @@ public class HotelBean implements Serializable {
     @Value("#{param['hotel_id']}")
     private String codigoHotel;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     Hotel hotelModificar;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     Hotel hotel;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     Habitacion habitacion;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private String camaS;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private String camaD;
 
     @Autowired
@@ -62,44 +57,25 @@ public class HotelBean implements Serializable {
     @Value("${upload.url}")
     private String urlImagenes;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Ciudad> ciudades;
 
-    @Getter
-    @Setter
-    private List<Hotel> hoteles;
-
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Caracteristica> caracteristicasHotel;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Caracteristica> caracteristicasHabitacion;
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<Cama> camasHabitacion;
 
     @Value("#{seguridadBean.persona}")
     private Persona personaSesion;
 
-    private final HotelServicio hotelServicio;
-    private final HabitacionServicio habitacionServicio;
-    private final CaracteristicaServicio caracteristicaServicio;
-
-
-    public HotelBean(HotelServicio hotelServicio, UnitravelServicio unitravelServicio, HabitacionServicio habitacionServicio, CaracteristicaServicio caracteristicaServicio) {
-        this.hotelServicio = hotelServicio;
-        this.unitravelServicio = unitravelServicio;
-        this.habitacionServicio = habitacionServicio;
-        this.caracteristicaServicio = caracteristicaServicio;
-    }
 
     @PostConstruct
     public void inicializar() {
-        try {
+        try{
             hotel = new Hotel();
             this.imagenesHotel = new ArrayList<>();
             ciudades = unitravelServicio.listarCiudades();
@@ -109,8 +85,10 @@ public class HotelBean implements Serializable {
             habitacion = new Habitacion();
             habitaciones = new ArrayList<>();
             camasHabitacion = new ArrayList<>();
-            hotelModificar = unitravelServicio.obtenerHotel(Integer.parseInt(codigoHotel));
-        } catch (Exception e) {
+            if(hotelModificar!=null){
+                hotelModificar = unitravelServicio.obtenerHotel(Integer.parseInt(codigoHotel));
+            }
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -118,11 +96,11 @@ public class HotelBean implements Serializable {
     public void crearHotel() {
         try {
 
-            if (personaSesion != null) {
-                if (imagenesHotel.size() > 0) {
-                    if (habitaciones.size() > 0) {
+            if(personaSesion!=null){
+                if(imagenesHotel.size()>0){
+                    if(habitaciones.size()>0){
 
-                        hotel.setAdmin((AdministradorHotel) personaSesion);
+                        hotel.setAdmin( (AdministradorHotel) personaSesion);
                         hotel.setFotos(imagenesHotel);
 
                         Hotel h = administradorHotelServicio.crearHotel(hotel);
@@ -138,11 +116,11 @@ public class HotelBean implements Serializable {
 
                         FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Hotel registrado");
                         FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
-                    } else {
+                    }else{
                         FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "El hotel debe tener habitaciones");
                         FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
                     }
-                } else {
+                }else{
                     FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio subir imágenes al hotel.");
                     FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
                 }
@@ -153,11 +131,11 @@ public class HotelBean implements Serializable {
         }
     }
 
-    public void actualizarHotel(Hotel hotelMod) {
+    public void actualizarHotel(Hotel hotelMod){
         try {
 
-            if (personaSesion != null) {
-                if (imagenesHotel.size() > 0) {
+            if(personaSesion!=null){
+                if(imagenesHotel.size()>0) {
 
                     hotel.setAdmin((AdministradorHotel) personaSesion);
                     hotel.setFotos(imagenesHotel);
@@ -176,11 +154,11 @@ public class HotelBean implements Serializable {
 
                     FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Hotel registrado");
                     FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
-                } else {
+                }else{
                     FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "El hotel debe tener habitaciones");
                     FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
                 }
-            } else {
+            }else{
                 FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio subir imágenes al hotel.");
                 FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
             }
@@ -191,40 +169,54 @@ public class HotelBean implements Serializable {
         }
     }
 
-    public void crearHabitacion() {
+    public void crearHabitacion(){
+        if(!imagenesHabitacion.isEmpty()){
+            habitacion.setFotos(imagenesHabitacion);
+            habitaciones.add(habitacion);
 
-        try {
-            if (imagenesHabitacion.size() > 0) {
-                habitacion.setFotos(imagenesHabitacion);
-                habitacion.setHotel(hotel);
-                habitacion.setCaracteristicas(caracteristicasHabitacion);
-                habitacionServicio.crearHabitacion(habitacion);
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("debe agregar imagenes a la habitacion"));
-                PrimeFaces.current().ajax().update("form:messages");
-                imagenesHabitacion.clear();
-            } else {
-                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio subir imágenes a la habitación.");
-                FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
-            }
-        } catch (Exception e) {
+            habitacion = new Habitacion();
+            imagenesHabitacion = new ArrayList<>();
+
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Habitación creada");
+            FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
+        }else{
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio subir imágenes a la habitación.");
             FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
         }
+    }
+
+    public void eliminarHotel(Hotel hotelMod){
+
+        if(hotelMod!=null){
+            if(personaSesion!=null){
+                try {
+                    administradorHotelServicio.eliminarHotel(hotelMod);
+                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Hotel eliminado");
+                    FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
 
     }
 
-    public void eliminarHotel() {
-        try {
-            hotelServicio.eliminarHotel(hotel.getCodigo());
-            hoteles.remove(hotel);
-        } catch (Exception e) {
-            e.getStackTrace();
+    public void subirImagenesHotel(FileUploadEvent event) {
+        UploadedFile imagen = event.getFile();
+        String nombreImagen = subirImagen(imagen);
+        if (nombreImagen != null) {
+            imagenesHotel.add(nombreImagen);
         }
     }
 
-    public void seleccionarHotel(Hotel h) {
-        this.hotel = h;
-        this.caracteristicasHotel = hotelServicio.obtenerCaracteristicasHotel(h.getCodigo());
+    public void subirImagenesHabitacion(FileUploadEvent event) {
+        UploadedFile imagen = event.getFile();
+        String nombreImagen = subirImagen(imagen);
+        if (nombreImagen != null) {
+            imagenesHabitacion.add(nombreImagen);
+        }
     }
 
     public String subirImagen(UploadedFile imagen) {
@@ -239,13 +231,13 @@ public class HotelBean implements Serializable {
         return null;
     }
 
-    public void crearCama(String cadena) {
+    public void crearCama(String cadena){
         System.out.println(cadena);
     }
 
 
-    public String irModificarHotel(String codigoHotel) {
-        return "actualizar_hotel?faces-redirect=true&amp;hotel_id=" + codigoHotel;
+    public String irModificarHotel(String codigoHotel){
+        return "actualizar_hotel?faces-redirect=true&amp;hotel_id="+codigoHotel;
     }
 
 }

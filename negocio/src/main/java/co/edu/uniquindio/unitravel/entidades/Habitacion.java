@@ -40,7 +40,7 @@ public class Habitacion implements Serializable {
     @ManyToOne
     private Hotel hotel;
 
-    @Column(length = 1, nullable = false, columnDefinition = "varchar(1) default 'A'")
+    @Column(length = 1, nullable = true, columnDefinition = "varchar(1) default 'A'")
     private String estado;
 
 

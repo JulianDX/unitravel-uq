@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -38,12 +39,10 @@ public class ReservaBean implements Serializable {
     @Getter @Setter
     private Reserva reserva;
 
-    @Getter @Setter
-    private Reserva reservaSeleccionada;
 
     @PostConstruct
     public void init() {
-        reservaSeleccionada = new Reserva();
+        reserva = new Reserva();
         try {
             listaReservas = reservaServicio.listarReservasCliente(clienteSesion.getCedula());
         } catch (Exception e) {
@@ -64,7 +63,7 @@ public class ReservaBean implements Serializable {
         }
     }
 
-    public String obtenerFechaComentario(LocalDateTime fecha) {
+    public String obtenerFechaComentario(LocalDate fecha) {
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return fecha.format(formato);
@@ -84,8 +83,8 @@ public class ReservaBean implements Serializable {
         this.reserva = reserva;
     }
 
-    public void setReservaSeleccionada(Reserva reservaSelec) {
-        reservaSeleccionada = reservaSelec;
+    public void setReserva(Reserva reservaSelec) {
+        reserva = reservaSelec;
     }
 
     public String convertirValorTotal(Reserva reserva) {
@@ -98,6 +97,7 @@ public class ReservaBean implements Serializable {
     public void registrarReserva(){
         try {
             reserva.setEstado("A");
+            reserva.setCliente(clienteSesion);
             reservaServicio.registrarReserva(reserva);
 
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Registro exitoso");

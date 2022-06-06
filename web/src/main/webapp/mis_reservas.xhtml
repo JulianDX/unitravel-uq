@@ -32,7 +32,7 @@
 
                 <p:column exportable="false">
                     <p:commandButton class="ui-button-info" icon="pi pi-search" value="Ver detalle" update="dialogReserva"
-                                     oncomplete="PF('detalleReserva').show()" action="#{reservaBean.setReservaSeleccionada(reserva)}">
+                                     oncomplete="PF('detalleReserva').show()" action="#{reservaBean.setReserva(reserva)}">
                     </p:commandButton>
                 </p:column>
                 <p:column exportable="false">
@@ -54,16 +54,16 @@
                 <p:panelGrid columns="2" columnClasses="label,value">
 
                     <h:outputText value="Fecha inicio:"/>
-                    <h:outputText value="#{reservaBean.reservaSeleccionada.fechaInicio}"/>
+                    <h:outputText value="#{reservaBean.reserva.fechaInicio}"/>
 
                     <h:outputText value="Fecha Fin:"/>
-                    <h:outputText value="#{reservaBean.reservaSeleccionada.fechaFin}"/>
+                    <h:outputText value="#{reservaBean.reserva.fechaFin}"/>
 
                     <h:outputText value="Cantidad de personas:"/>
-                    <h:outputText value="#{reservaBean.reservaSeleccionada.cantidadPersonas}"/>
+                    <h:outputText value="#{reservaBean.reserva.cantidadPersonas}"/>
 
                     <h:outputText value="Valor total:"/>
-                    <h:outputText value="#{reservaBean.reservaSeleccionada.precioTotal}"/>
+                    <h:outputText value="#{reservaBean.reserva.precioTotal}"/>
 
                 </p:panelGrid>
             </h:form>

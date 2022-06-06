@@ -18,7 +18,7 @@ public class MetodoPago {
     @EqualsAndHashCode.Include
     private int codigo;
 
-    @Column(nullable = false, length = 1)
+    @Column(nullable = true, length = 1)
     private String estado;
 
     @Column(nullable = false, length = 100)
