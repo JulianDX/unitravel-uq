@@ -54,6 +54,19 @@ public class SeguridadFilter implements Filter {
 //El usuario no está logueado, entonces se redirecciona al inicio
                     response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
                 }
+            }else if(requestURI.startsWith("/admin/")) {
+                if (userManager != null) {
+                    if (userManager.isAutenticado() && userManager.getRol()==3) {
+//El usuario está logueado entonces si puede ver la página solicitada
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } else {
+//El usuario no está logueado, entonces se redirecciona al inicio
+                        response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
+                    }
+                } else {
+//El usuario no está logueado, entonces se redirecciona al inicio
+                    response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
+                }
             }else{
                 filterChain.doFilter(servletRequest, servletResponse);
             }

@@ -52,7 +52,7 @@
             <p:message for="desc_h" />
 
             <p:outputLabel for="descuento_h" value="Descuento (Opcional):"/>
-            <p:inputText id="descuento_h" type="text" value="#"/>
+            <p:inputText id="descuento_h" type="text" />
             <p:message for="descuento_h" />
 
             <p:outputLabel for="imagenes_hotel" value="Imágenes: " />
@@ -97,13 +97,6 @@
                 <p:outputLabel for="precio_hab" value="Precio:"/>
                 <p:inputText id="precio_hab" type="text" value="#{hotelBean.habitacion.precio}" required="true"/>
                 <p:message for="precio_hab" />
-
-                <p:outputLabel for="camas" value="Camas:"/>
-                <p:selectManyCheckbox id="camas" >
-                    <f:selectItem itemLabel="Sencilla" value="#{hotelBean.camaS}" />
-                    <f:selectItem itemLabel="Doble" value="#{hotelBean.camaD}" />
-                </p:selectManyCheckbox>
-                <p:message for="camas" />
 
                 <p:outputLabel for="caract_hotel" value="Características: " />
                 <p:selectManyCheckbox  converter="#{caracteristicasConverter}" id="caract_hotel" value="#{hotelBean.habitacion.caracteristicas}" required="true" requiredMessage="Las características son obligatorias" >

@@ -23,6 +23,6 @@ public interface AdministradorHotelServicio {
 
     Hotel obtenerHotel(Integer codigo) throws Exception;
 
-
+    void eliminarHotel(Hotel hotel) throws Exception;
 
 }

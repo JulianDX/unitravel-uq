@@ -28,7 +28,7 @@
                         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
 
                             <li>
-                                <a href="#" class="nav-link here">
+                                <a href="../index.xhtml" class="nav-link here">
                                     <i class="pi pi-fw pi-home bi d-block mx-auto mb-1 icon-menu"></i>
                                     Home Unitravel
                                 </a>
@@ -58,9 +58,15 @@
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==3}" >
-                                <a  href="#" class="nav-link text-purple" >
+                                <a  href="/admin/gestionar_adminh.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
                                     Gestionar Administradores Hotel
+                                </a>
+                            </li>
+                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==3}" >
+                                <a  href="/admin/gestionar_destinos.xhtml" class="nav-link text-purple" >
+                                    <i class="pi pi-map-marker bi d-block mx-auto mb-1 icon-menu"></i>
+                                    Gestionar destinos
                                 </a>
                             </li>
                         </ul>
@@ -88,7 +94,7 @@
                         </h:form>
                     </div>
                 </div>
-                <p:dialog header="Iniciar sesión" showEffect="fade" widgetVar="login" modal="true" blockScroll="true" draggable="false">
+                <p:dialog header="Iniciar sesión" showEffect="fade" widgetVar="login" modal="true" blockScroll="true" draggable="false" resizable="false">
                     <h:form >
                         <h:panelGrid columns="3" cellpadding="5">
                             <p:outputLabel for="email_login" value="Email:" />
@@ -96,6 +102,7 @@
                             <p:outputLabel for="password_login" value="Password:" />
                             <p:password id="password_login" value="#{seguridadBean.password}" required="true" />
                             <p:message for="password_login" />
+                            <a href="/password_reset.xhtml" >Olvidé mi contraseña</a>
                         </h:panelGrid>
                         <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesion}" styleClass="mt-4" update="@form" icon="pi pi-sign-in" iconPos="left" /> <p:growl for="login-bean" showDetail="true" />
                     </h:form>

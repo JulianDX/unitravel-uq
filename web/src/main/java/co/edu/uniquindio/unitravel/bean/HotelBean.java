@@ -183,6 +183,24 @@ public class HotelBean implements Serializable {
         }
     }
 
+    public void eliminarHotel(Hotel hotelMod){
+
+        if(hotelMod!=null){
+            if(personaSesion!=null){
+                try {
+                    administradorHotelServicio.eliminarHotel(hotelMod);
+                    FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Hotel eliminado");
+                    FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+
+    }
+
     public void subirImagenesHotel(FileUploadEvent event) {
         UploadedFile imagen = event.getFile();
         String nombreImagen = subirImagen(imagen);

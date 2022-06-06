@@ -69,5 +69,10 @@ public class AdministradorHotelServicioImpl implements AdministradorHotelServici
         return hotelRepo.findById(codigo).orElse(null);
     }
 
+    @Override
+    public void eliminarHotel(Hotel hotel) throws Exception {
+        hotelRepo.delete(hotel);
+    }
+
 
 }

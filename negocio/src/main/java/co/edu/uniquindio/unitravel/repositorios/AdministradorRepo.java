@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unitravel.repositorios;
 
 import co.edu.uniquindio.unitravel.entidades.Administrador;
+import co.edu.uniquindio.unitravel.entidades.AdministradorHotel;
 import co.edu.uniquindio.unitravel.entidades.Cliente;
 import co.edu.uniquindio.unitravel.entidades.Persona;
 import org.springframework.data.domain.Page;
@@ -28,5 +29,6 @@ public interface AdministradorRepo extends JpaRepository<Administrador,String> {
     Page<Administrador> findAll(Pageable pageable);
 
     Optional<Persona> findByEmail(String correo);
+
 
 }

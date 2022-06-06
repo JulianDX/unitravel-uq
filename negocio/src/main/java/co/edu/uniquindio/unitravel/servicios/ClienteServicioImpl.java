@@ -111,4 +111,9 @@ public class ClienteServicioImpl implements ClienteServicio{
         return ciudadRepo.findById(codigo).orElseThrow(()-> new Exception("El código no existe"));
     }
 
+    @Override
+    public Persona obtenerClientePorCorreo(String correo) {
+        return clienteRepo.obtenerClienteDadoCorreo(correo);
+    }
+
 }

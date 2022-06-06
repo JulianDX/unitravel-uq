@@ -22,7 +22,7 @@ insert into caracteristica values(12,"Toallas","2");
 insert into caracteristica values(13,"Kit limpieza","2");
 insert into caracteristica values(14,"Balcón","2");
 
-insert into cliente values ("1020838034","jfroa@hotmail.com","Julian","z9qzumzOIpCBuMco/dtmqyxCjo4L2wLVaKbaCK2TdrNHYEZH7AwBoerDEVo9+OR8",1);
+insert into cliente values ("1020838034","jfroap@uqvirtual.edu.co","Julian","z9qzumzOIpCBuMco/dtmqyxCjo4L2wLVaKbaCK2TdrNHYEZH7AwBoerDEVo9+OR8",1);
 insert into cliente values ("9198283812","daniel@hotmail.com","Daniel","z9qzumzOIpCBuMco/dtmqyxCjo4L2wLVaKbaCK2TdrNHYEZH7AwBoerDEVo9+OR8",2);
 insert into cliente values ("1923881992","carlos@hotmail.com","Carlos","z9qzumzOIpCBuMco/dtmqyxCjo4L2wLVaKbaCK2TdrNHYEZH7AwBoerDEVo9+OR8",3);
 insert into cliente values ("8448567378","julie@hotmail.com","Julie","z9qzumzOIpCBuMco/dtmqyxCjo4L2wLVaKbaCK2TdrNHYEZH7AwBoerDEVo9+OR8",4);

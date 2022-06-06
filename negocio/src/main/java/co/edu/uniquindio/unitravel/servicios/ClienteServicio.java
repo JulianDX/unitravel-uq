@@ -28,4 +28,6 @@ public interface ClienteServicio {
 
     Ciudad obtenerCiudad(Integer codigo) throws Exception;
 
+    Persona obtenerClientePorCorreo(String correo);
+
 }

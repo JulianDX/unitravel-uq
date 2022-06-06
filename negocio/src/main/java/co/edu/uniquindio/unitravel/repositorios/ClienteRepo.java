@@ -25,6 +25,9 @@ public interface ClienteRepo extends JpaRepository<Cliente,String> {
 
     Persona findByEmail(String correo);
 
+    @Query("select c from Cliente c where c.email = :email")
+    Persona obtenerClienteDadoCorreo(String email);
+
     @Override
     Page<Cliente> findAll(Pageable pageable);
 }
