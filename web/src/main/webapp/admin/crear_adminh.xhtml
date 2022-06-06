@@ -12,35 +12,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Página de Inicio</title>
 </h:head>
 
-<ui:composition template="/WEB-INF/template.xhtml">
+<ui:composition template="/webapp/WEB-INFWEB-INF/template.xhtml">
 
     <ui:define name="content">
 
-        <h1>Modificar Administrador Hotel</h1>
+        <h1>Crear Administrador Hotel</h1>
 
-        <p:panel header="Modificar Administrador Hotel">
+        <p:panel header="Crear Administrador Hotel">
 
             <h:form>
 
                 <h:panelGrid columns="3" cellpadding="5">
 
+                    <p:outputLabel for="cedula" value="Cédula:"/>
+                    <p:inputText id="cedula" type="text" value="#{administradorBean.adminAuxiliar.cedula}" required="true"/>
+                    <p:message for="cedula" />
+
                     <p:outputLabel for="email" value="E-mail:"/>
-                    <p:inputText id="email" type="text" placeholder="#{administradorBean.administradorHotel.email}" value="#{administradorBean.adminAuxiliar.email}" required="true"/>
+                    <p:inputText id="email" type="text" value="#{administradorBean.adminAuxiliar.email}" required="true"/>
                     <p:message for="email" />
 
                     <p:outputLabel for="nombre" value="Nombre:"/>
-                    <p:inputText id="nombre" type="text" placeholder="#{administradorBean.administradorHotel.nombre}" value="#{administradorBean.adminAuxiliar.nombre}" required="true"/>
+                    <p:inputText id="nombre" type="text"  value="#{administradorBean.adminAuxiliar.nombre}" required="true"/>
                     <p:message for="nombre" />
 
                     <p:outputLabel for="password" value="Contraseña:"/>
-                    <p:inputText id="password" type="text" placeholder="#{administradorBean.administradorHotel.password}" value="#{administradorBean.adminAuxiliar.password}" required="true"/>
+                    <p:inputText id="password" type="text"  value="#{administradorBean.adminAuxiliar.password}" required="true"/>
                     <p:message for="password" />
 
                 </h:panelGrid>
 
                 <p:growl for="msj_bean" showDetail="true"/>
 
-                <p:commandButton styleClass="mt-3 mb-1" action="#{administradorBean.modificarAdminH(administradorBean.administradorHotel)}" value="Actualizar administrador hotel" update="@form" icon="pi pi-check"/>
+                <p:commandButton styleClass="mt-3 mb-1" action="#{administradorBean.crearAdminH(administradorBean.adminAuxiliar)}" value="Crear administrador hotel" update="@form" icon="pi pi-check"/>
 
             </h:form>
 

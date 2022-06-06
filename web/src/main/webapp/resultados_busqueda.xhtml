@@ -15,7 +15,7 @@
     <h:outputScript library="js" name="bootstrap.bundle.min.js" />
 </h:head>
 
-<ui:composition template="/WEB-INF/template.xhtml">
+<ui:composition template="/webapp/WEB-INFWEB-INF/template.xhtml">
 
 <ui:define name="content">
 
@@ -29,7 +29,7 @@
 
             <div class="row d-flex m-5" >
                 <div class="col-lg-2 col-md-1" style="text-align: center" >
-                    <img src="/uploads/#{hotel.imagenPrincipal}" class="imagen-hotel" alt="imagen_hotel" /> </div>
+                    <img src="/webapp/uploads/#{hotel.imagenPrincipal}" class="imagen-hotel" alt="imagen_hotel" /> </div>
                 <div class="col-lg-8 col-md-1 align-self-center" >
                     <p:outputPanel>
                         <h:panelGrid columns="2" cellpadding="5" >
@@ -57,7 +57,7 @@
 
         <p:dataViewGridItem>
             <div class="card" >
-                <img src="/uploads/#{hotel.imagenPrincipal}" class="card-img-top"
+                <img src="/webapp/uploads/#{hotel.imagenPrincipal}" class="card-img-top"
                      alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">#{hotel.nombre}</h5>
