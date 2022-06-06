@@ -40,6 +40,9 @@ public class Hotel implements Serializable {
     @NotBlank(message = "El teléfono del hotel no puede ser vacío")
     private String telefono;
 
+    @Column(length = 1, nullable = false, columnDefinition = "varchar(1) default 'A'")
+    private String estado;
+
     @Column(nullable = false)
     @Min(1)
     @Max(5)

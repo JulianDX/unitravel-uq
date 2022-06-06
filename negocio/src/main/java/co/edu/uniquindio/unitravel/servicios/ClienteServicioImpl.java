@@ -4,18 +4,24 @@ import co.edu.uniquindio.unitravel.entidades.*;
 import co.edu.uniquindio.unitravel.repositorios.CiudadRepo;
 import co.edu.uniquindio.unitravel.repositorios.ClienteRepo;
 import co.edu.uniquindio.unitravel.repositorios.HotelRepo;
+import co.edu.uniquindio.unitravel.repositorios.ReservaRepo;
 import org.jasypt.util.password.StrongPasswordEncryptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClienteServicioImpl implements ClienteServicio{
 
+    @Autowired
     private ClienteRepo clienteRepo;
+    @Autowired
     private HotelRepo hotelRepo;
+    @Autowired
     private CiudadRepo ciudadRepo;
+    @Autowired
+    private ReservaRepo reservaRepo;
 
     public ClienteServicioImpl(ClienteRepo clienteRepo, HotelRepo hotelRepo, CiudadRepo ciudadRepo){
         this.clienteRepo = clienteRepo;
@@ -61,6 +67,8 @@ public class ClienteServicioImpl implements ClienteServicio{
         return clienteRepo.findById(cedula).orElse(null);
     }
 
+
+
     public Cliente obtenerClienteEmail(String correo){
         return (Cliente) clienteRepo.findByEmail(correo);
     }
@@ -91,6 +99,7 @@ public class ClienteServicioImpl implements ClienteServicio{
         return null;
     }
 
+
     @Override
     public List<Hotel> buscarHotelNombre(String nombre){
         return hotelRepo.buscarHotelNombre(nombre);
@@ -106,9 +115,11 @@ public class ClienteServicioImpl implements ClienteServicio{
         return null;
     }
 
+
     @Override
     public Ciudad obtenerCiudad(Integer codigo) throws Exception {
         return ciudadRepo.findById(codigo).orElseThrow(()-> new Exception("El código no existe"));
     }
+
 
 }

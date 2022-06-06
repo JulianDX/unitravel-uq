@@ -30,4 +30,7 @@ public class ReservaHabitacion implements Serializable {
 
     @ManyToOne
     private Reserva reserva;
+
+
+
 }

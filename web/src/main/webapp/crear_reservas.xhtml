@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Página de Inicio</title>
+</h:head>
+
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <h1>crear reserva</h1>
+
+        <p:panel header="Crear Reserva">
+            <h:form>
+                <h:panelGrid columns="3" cellpadding="5">
+
+                    <p:outputLabel for="can_persona" value="Cantidad Personas:"/>
+                    <p:inputText id="can_persona" type="number" value="#{reservaBean.reserva.cantidadPersonas}" required="true"/>
+                    <p:message for="can_persona" />
+
+
+                    <p:outputLabel for="estado" value="Estado:"/>
+                    <p:inputText required="true" id="estado" value="#{reservaBean.reserva.estado}"/>
+                    <p:message for="estado" />
+
+                    <p:outputLabel for="fecha_r" value="Fecha Reserva" styleClass= "me-2" />
+                    <p:datePicker id="fecha_r" value="#{reservaBean.reserva.fechaInicio}" placeholder="Indique la fecha de la reserva" selectionMode="range" numberOfMonths="2" styleClass="me-2" required="true">
+                    </p:datePicker>
+                    <p:message for="fecha_r" />
+
+                    <p:outputLabel for="precio" value="Precio:"/>
+                    <p:inputText required="true" id="precio" value="#{reservaBean.reserva.precioTotal}"/>
+                    <p:message for="precio" />
+
+                    <p:outputLabel for="cedula" value="Cedula:"/>
+                    <p:inputText required="true" id="cedula" value="#{reservaBean.reserva.cliente.cedula}"/>
+                    <p:message for="cedula" />
+
+                </h:panelGrid>
+
+                <p:commandButton action="#{reservaBean.registraReserva()}" value="Registrar Reserva" update="@form" />
+                <p:growl for="msj_bean" showDetail="true"/>
+
+            </h:form>
+
+        </p:panel>
+    </ui:define>
+</ui:composition>
+
+</html>

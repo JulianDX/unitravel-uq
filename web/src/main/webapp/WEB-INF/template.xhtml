@@ -28,9 +28,9 @@
                         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
 
                             <li>
-                                <a href="#" class="nav-link here">
+                                <a href="/" class="nav-link here">
                                     <i class="pi pi-fw pi-home bi d-block mx-auto mb-1 icon-menu"></i>
-                                    Home Unitravel
+                                    Inicio Unitravel
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==2}">
@@ -52,7 +52,7 @@
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
-                                <a  href="#" class="nav-link text-purple" >
+                                <a  href="/mis_reservas.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
                                     Mis reservas
                                 </a>
@@ -61,6 +61,12 @@
                                 <a  href="#" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
                                     Gestionar Administradores Hotel
+                                </a>
+                            </li>
+                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
+                                <a  href="/crear_reservas.xhtml" class="nav-link text-purple" >
+                                    <i class="pi pi-fw pi-inbox bi d-block mx-auto mb-1 icon-menu"></i>
+                                    Crear Reserva
                                 </a>
                             </li>
                         </ul>

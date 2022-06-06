@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Ciudad implements Serializable {
+public class Ciudad implements Serializable{
 
     @Id
     @EqualsAndHashCode.Include
@@ -38,10 +38,12 @@ public class Ciudad implements Serializable {
     @ToString.Exclude
     private List<Vuelo> vuelosdestino;
 
+    @Setter @Getter
     private String imagen;
 
     public Ciudad(int codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
     }
+
 }

@@ -1,11 +1,11 @@
 package co.edu.uniquindio.unitravel.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -40,8 +40,9 @@ public class Reserva implements Serializable {
     @Column(nullable = false, length = 50)
     private String estado;
 
-    @PositiveOrZero
+    @Positive
     @Column(nullable = false)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private int cantidadPersonas;
 
     @JoinColumn(nullable = false)
@@ -51,7 +52,22 @@ public class Reserva implements Serializable {
     @OneToMany(mappedBy = "reserva")
     private List<ReservaSilla> reservasillas;
 
+
     @OneToMany(mappedBy = "reserva")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ToString.Exclude
     private List<ReservaHabitacion> reservaHabitaciones;
+
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ToString.Exclude
+    private List<Habitacion> habitaciones;
+
+    @ManyToOne
+    private MetodoPago metodoPago;
+
+
+
+
 
 }

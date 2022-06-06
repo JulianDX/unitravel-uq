@@ -1,11 +1,11 @@
 package co.edu.uniquindio.unitravel.bean;
 
 import co.edu.uniquindio.unitravel.entidades.*;
-import co.edu.uniquindio.unitravel.servicios.AdministradorHotelServicio;
-import co.edu.uniquindio.unitravel.servicios.UnitravelServicio;
+import co.edu.uniquindio.unitravel.servicios.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.io.IOUtils;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +61,9 @@ public class HotelBean implements Serializable {
     private List<Ciudad> ciudades;
 
     @Getter @Setter
+    private List<Hotel> hoteles;
+
+    @Getter @Setter
     private List<Caracteristica> caracteristicasHotel;
 
     @Getter @Setter
@@ -72,6 +75,17 @@ public class HotelBean implements Serializable {
     @Value("#{seguridadBean.persona}")
     private Persona personaSesion;
 
+    private final HotelServicio hotelServicio;
+    private final HabitacionServicio habitacionServicio;
+    private final CaracteristicaServicio caracteristicaServicio;
+
+
+    public HotelBean(HotelServicio hotelServicio, UnitravelServicio unitravelServicio, HabitacionServicio habitacionServicio, CaracteristicaServicio caracteristicaServicio) {
+        this.hotelServicio = hotelServicio;
+        this.unitravelServicio = unitravelServicio;
+        this.habitacionServicio = habitacionServicio;
+        this.caracteristicaServicio = caracteristicaServicio;
+    }
 
     @PostConstruct
     public void inicializar() {
@@ -168,35 +182,38 @@ public class HotelBean implements Serializable {
     }
 
     public void crearHabitacion(){
-        if(!imagenesHabitacion.isEmpty()){
-            habitacion.setFotos(imagenesHabitacion);
-            habitaciones.add(habitacion);
 
-            habitacion = new Habitacion();
-            imagenesHabitacion = new ArrayList<>();
-
-            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Habitación creada");
-            FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
-        }else{
+        try {
+            if(imagenesHabitacion.size()>0){
+                habitacion.setFotos(imagenesHabitacion);
+                habitacion.setHotel(hotel);
+                habitacion.setCaracteristicas(caracteristicasHabitacion);
+                habitacionServicio.crearHabitacion(habitacion);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("debe agregar imagenes a la habitacion"));
+                PrimeFaces.current().ajax().update("form:messages");
+                imagenesHabitacion.clear();
+            }else{
+                FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio subir imágenes a la habitación.");
+                FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
+            }
+        } catch (Exception e) {
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Alerta", "Es obligatorio subir imágenes a la habitación.");
             FacesContext.getCurrentInstance().addMessage("msj_bean", facesMsg);
         }
-    }
 
-    public void subirImagenesHotel(FileUploadEvent event) {
-        UploadedFile imagen = event.getFile();
-        String nombreImagen = subirImagen(imagen);
-        if (nombreImagen != null) {
-            imagenesHotel.add(nombreImagen);
+    }
+    public void eliminarHotel() {
+        try {
+            hotelServicio.eliminarHotel(hotel.getCodigo());
+            hoteles.remove(hotel);
+        } catch (Exception e) {
+            e.getStackTrace();
         }
     }
 
-    public void subirImagenesHabitacion(FileUploadEvent event) {
-        UploadedFile imagen = event.getFile();
-        String nombreImagen = subirImagen(imagen);
-        if (nombreImagen != null) {
-            imagenesHabitacion.add(nombreImagen);
-        }
+    public void seleccionarHotel(Hotel h) {
+        this.hotel = h;
+        this.caracteristicasHotel = hotelServicio.obtenerCaracteristicasHotel(h.getCodigo());
     }
 
     public String subirImagen(UploadedFile imagen) {
