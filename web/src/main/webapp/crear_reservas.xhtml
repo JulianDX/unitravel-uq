@@ -20,21 +20,26 @@
 
         <p:panel header="Crear Reserva">
             <h:form>
-                <h:panelGrid columns="3" cellpadding="5">
+                <h:panelGrid columns="3" cellpadding="5" >
 
                     <p:outputLabel for="can_persona" value="Cantidad Personas:"/>
                     <p:inputText id="can_persona" type="number" value="#{reservaBean.reserva.cantidadPersonas}" required="true"/>
                     <p:message for="can_persona" />
 
-
-                    <p:outputLabel for="estado" value="Estado:"/>
-                    <p:inputText required="true" id="estado" value="#{reservaBean.reserva.estado}"/>
-                    <p:message for="estado" />
-
-                    <p:outputLabel for="fecha_r" value="Fecha Reserva" styleClass= "me-2" />
-                    <p:datePicker id="fecha_r" value="#{reservaBean.reserva.fechaInicio}" placeholder="Indique la fecha de la reserva" selectionMode="range" numberOfMonths="2" styleClass="me-2" required="true">
+                    <p:outputLabel for="inicial" value="Fecha Reserva Inicial" styleClass= "me-2" />
+                    <p:datePicker id="inicial" value="#{reservaBean.reserva.fechaInicio}" placeholder="Indique la fecha de la reserva iniciar" numberOfMonths="1" styleClass="me-2" required="true">
                     </p:datePicker>
-                    <p:message for="fecha_r" />
+                    <p:message for="inicial" />
+
+                    <p:outputLabel for="final" value="Fecha Reserva Final" styleClass= "me-2" />
+                    <p:datePicker id="final" value="#{reservaBean.reserva.fechaFin}" placeholder="Indique la fecha de la reserva terminar" numberOfMonths="1" styleClass="me-2" required="true">
+                    </p:datePicker>
+                    <p:message for="final" />
+
+                    <p:outputLabel for="reserva" value="Fecha Reserva" styleClass= "me-2" />
+                    <p:datePicker id="reserva" value="#{reservaBean.reserva.fechaReserva}" placeholder="Indique la fecha de ahora" numberOfMonths="1" styleClass="me-2" >
+                    </p:datePicker>
+                    <p:message for="reserva" />
 
                     <p:outputLabel for="precio" value="Precio:"/>
                     <p:inputText required="true" id="precio" value="#{reservaBean.reserva.precioTotal}"/>
@@ -46,7 +51,7 @@
 
                 </h:panelGrid>
 
-                <p:commandButton action="#{reservaBean.registraReserva()}" value="Registrar Reserva" update="@form" />
+                <p:commandButton action="#{reservaBean.registrarReserva()}" value="Registrar Reserva" update="@form" />
                 <p:growl for="msj_bean" showDetail="true"/>
 
             </h:form>

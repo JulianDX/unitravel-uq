@@ -42,7 +42,6 @@ public class Reserva implements Serializable {
 
     @Positive
     @Column(nullable = false)
-    @LazyCollection(LazyCollectionOption.FALSE)
     private int cantidadPersonas;
 
     @JoinColumn(nullable = false)
@@ -66,8 +65,11 @@ public class Reserva implements Serializable {
     @ManyToOne
     private MetodoPago metodoPago;
 
-
-
-
-
+    public Reserva(int codigo, LocalDateTime fechaReserva, LocalDate fechaInicio, LocalDate fechaFin, Double precioTotal) {
+        this.codigo = codigo;
+        this.fechaReserva = fechaReserva;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.precioTotal = precioTotal;
+    }
 }

@@ -22,6 +22,8 @@ import java.util.Locale;
 
 @Component
 @ViewScoped
+@Getter
+@Setter
 public class ReservaBean implements Serializable {
 
     @Autowired
@@ -92,6 +94,20 @@ public class ReservaBean implements Serializable {
         NumberFormat formato = NumberFormat.getCurrencyInstance(locale);
         return formato.format(reserva.getPrecioTotal());
     }
+
+    public void registrarReserva(){
+        try {
+            reserva.setEstado("A");
+            reservaServicio.registrarReserva(reserva);
+
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Registro exitoso");
+            FacesContext.getCurrentInstance().addMessage("msj_bean",facesMsg);
+        } catch (Exception e) {
+            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("msj_bean",facesMsg);
+        }
+    }
+
 
 }
 

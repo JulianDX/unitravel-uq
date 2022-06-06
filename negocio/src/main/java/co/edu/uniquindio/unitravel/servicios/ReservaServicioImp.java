@@ -35,9 +35,9 @@ public class ReservaServicioImp implements ReservaServicio {
         if (reserva.getPrecioTotal() <= 0) {
             throw new Exception("El precio total debe ser mayor a 0");
         }
-
         //Se envía el correo electrónico del usuario
         emailServicio.EnviarEmail("Reserva Unitravel", obtenerDescripcionReserva(reserva), reserva.getCliente().getEmail());
+
         return reservaRepo.save(reserva);
     }
 
