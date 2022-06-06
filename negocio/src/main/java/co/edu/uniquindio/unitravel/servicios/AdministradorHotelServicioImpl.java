@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdministradorHotelServicioImpl implements AdministradorHotelServicio{
+public class AdministradorHotelServicioImpl implements AdministradorHotelServicio {
 
     private AdministradorHotelRepo administradorHotelRepo;
     private HotelRepo hotelRepo;
@@ -67,6 +67,11 @@ public class AdministradorHotelServicioImpl implements AdministradorHotelServici
     @Override
     public Hotel obtenerHotel(Integer codigo) throws Exception{
         return hotelRepo.findById(codigo).orElse(null);
+    }
+
+    @Override
+    public void eliminarHotel(Hotel hotel) throws Exception {
+        hotelRepo.delete(hotel);
     }
 
 

@@ -28,9 +28,9 @@ public class SeguridadFilter implements Filter {
             SeguridadBean userManager = (SeguridadBean) request.getSession().getAttribute("seguridadBean");
 
 //Aplicar el filtro a esta carpeta
-            if (requestURI.startsWith("/cliente/") ) {
+            if (requestURI.startsWith("/cliente/")) {
                 if (userManager != null) {
-                    if (userManager.isAutenticado() && userManager.getRol()==1) {
+                    if (userManager.isAutenticado() && userManager.getRol() == 1) {
 //El usuario está logueado entonces si puede ver la página solicitada
                         filterChain.doFilter(servletRequest, servletResponse);
                     } else {
@@ -41,9 +41,9 @@ public class SeguridadFilter implements Filter {
 //El usuario no está logueado, entonces se redirecciona al inicio
                     response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
                 }
-            }else if (requestURI.startsWith("/admin_hotel/")){
+            } else if (requestURI.startsWith("/admin_hotel/")) {
                 if (userManager != null) {
-                    if (userManager.isAutenticado() && userManager.getRol()==2) {
+                    if (userManager.isAutenticado() && userManager.getRol() == 2) {
 //El usuario está logueado entonces si puede ver la página solicitada
                         filterChain.doFilter(servletRequest, servletResponse);
                     } else {
@@ -54,14 +54,25 @@ public class SeguridadFilter implements Filter {
 //El usuario no está logueado, entonces se redirecciona al inicio
                     response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
                 }
-            }else{
+            } else if (requestURI.startsWith("/admin/")) {
+                if (userManager != null) {
+                    if (userManager.isAutenticado() && userManager.getRol() == 3) {
+//El usuario está logueado entonces si puede ver la página solicitada
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } else {
+//El usuario no está logueado, entonces se redirecciona al inicio
+                        response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
+                    }
+                } else {
+//El usuario no está logueado, entonces se redirecciona al inicio
+                    response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
+                }
+            } else {
                 filterChain.doFilter(servletRequest, servletResponse);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
-
 }
+

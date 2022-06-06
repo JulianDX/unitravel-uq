@@ -28,4 +28,5 @@ public interface ClienteServicio {
 
     Ciudad obtenerCiudad(Integer codigo) throws Exception;
 
+    Persona obtenerClientePorCorreo(String pass_reset);
 }

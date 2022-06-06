@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -68,4 +69,78 @@
     </ui:define>
 </ui:composition>
 
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Página de Inicio</title>
+</h:head>
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+
+        <div id="content">
+
+            <h1>Hoteles del administrador: #{seguridadBean.adminh.nombre}</h1>
+
+            <h:form>
+
+                <p:dataView id="lista_h" value="#{seguridadBean.adminh.hoteles}" var="admin_hotel" listIcon="pi pi-bars" gridIcon="pi pi-th-large">
+
+                    <p:dataViewListItem>
+
+                        <div class="row d-flex m-5" >
+                            <div class="col-lg-2 col-md-1" style="text-align: center" >
+                                <img src="/uploads/#{admin_hotel.imagenPrincipal}" class="imagen-hotel" alt="imagen_hotel" />
+                            </div>
+                            <div class="col-lg-8 col-md-1 align-self-center" >
+                                <p:outputPanel>
+                                    <h:panelGrid columns="2" cellpadding="5" >
+                                        <h:outputText value="Creado por:" />
+                                        <h:outputText value="#{admin_hotel.admin.nombre}" style="font-weight: bold" />
+                                        <h:outputText value="Nombre:" />
+                                        <h:outputText value="#{admin_hotel.nombre}" style="font-weight: bold" />
+                                        <h:outputText value="Ciudad:" />
+                                        <h:outputText value="#{admin_hotel.ciudad.nombre}" />
+                                        <h:outputText value="Características:" />
+                                        <p:repeat value="#{admin_hotel.caracteristicas}" var="car">
+                                            <p:chip label="#{car.nombre}" styleClass="me-2"/>
+                                        </p:repeat>
+                                        <h:outputText value="Descripción:" />
+                                        <h:outputText value="#{admin_hotel.descripcion}" />
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </div>
+                            <div class="col-lg-2 col-md-1 align-self-center" >
+                                <p:commandButton value="Modificar" styleClass="ui-button-raised"
+                                                 icon="pi pi-arrow-right" iconPos="right" action="#{hotelBean.irModificarHotel(admin_hotel.codigo)}" />
+                                <p:commandButton value="Eliminar " styleClass="ui-button-raised mt-3"
+                                                 icon="pi pi-times" iconPos="right" action="#{hotelBean.eliminarHotel(admin_hotel)}" update="@form"/>
+                                <p:growl for="msj_bean" showDetail="true"/>
+                            </div>
+
+                        </div>
+
+
+                    </p:dataViewListItem>
+
+                </p:dataView>
+
+            </h:form>
+
+
+        </div>
+
+    </ui:define>
+</ui:composition>
+
+>>>>>>> refs/remotes/origin/main
 </html>

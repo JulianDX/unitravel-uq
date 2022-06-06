@@ -1,3 +1,4 @@
+
 package co.edu.uniquindio.unitravel.repositorios;
 
 import co.edu.uniquindio.unitravel.entidades.Administrador;

@@ -90,17 +90,6 @@ public class ClienteServicioImpl implements ClienteServicio{
     }
 
     @Override
-    public Comentario crearComentario(String comentario) {
-        return null;
-    }
-
-    @Override
-    public Reserva hacerReserva() {
-        return null;
-    }
-
-
-    @Override
     public List<Hotel> buscarHotelNombre(String nombre){
         return hotelRepo.buscarHotelNombre(nombre);
     }
@@ -115,11 +104,26 @@ public class ClienteServicioImpl implements ClienteServicio{
         return null;
     }
 
-
     @Override
     public Ciudad obtenerCiudad(Integer codigo) throws Exception {
         return ciudadRepo.findById(codigo).orElseThrow(()-> new Exception("El código no existe"));
     }
 
+    @Override
+    public Comentario crearComentario(String comentario) {
+        return null;
+    }
+
+    @Override
+    public Reserva hacerReserva() {
+        return null;
+    }
+
+
+    @Override
+    public Persona obtenerClientePorCorreo(String correo) {
+        return clienteRepo.obtenerClienteDadoCorreo(correo);
+    }
 
 }
+

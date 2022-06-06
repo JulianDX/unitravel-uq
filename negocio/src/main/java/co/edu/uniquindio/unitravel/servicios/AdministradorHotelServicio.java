@@ -1,3 +1,4 @@
+
 package co.edu.uniquindio.unitravel.servicios;
 
 import co.edu.uniquindio.unitravel.entidades.AdministradorHotel;
@@ -23,6 +24,7 @@ public interface AdministradorHotelServicio {
 
     Hotel obtenerHotel(Integer codigo) throws Exception;
 
-
+    void eliminarHotel(Hotel hotel) throws Exception;
 
 }
+

@@ -1,3 +1,4 @@
+
 package co.edu.uniquindio.unitravel.repositorios;
 
 import co.edu.uniquindio.unitravel.entidades.Cliente;
@@ -27,4 +28,7 @@ public interface ClienteRepo extends JpaRepository<Cliente,String> {
 
     @Override
     Page<Cliente> findAll(Pageable pageable);
+
+    @Query("select c from Cliente c where c.email = :email")
+    Persona obtenerClienteDadoCorreo(String email);
 }
