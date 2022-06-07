@@ -50,6 +50,8 @@ public class DatosIniciales implements CommandLineRunner {
             caracteristicaServicio.registrarCaracteristica(new Caracteristica (12,"Toallas","2"));
             caracteristicaServicio.registrarCaracteristica(new Caracteristica (13,"Kit limpieza","2"));
 
+
+
             administradorServicio.crearAdminH(new AdministradorHotel("3884939384","adh@hotmail.com","Sebastian","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO"));
             administradorServicio.crearAdminH(new AdministradorHotel("4883884838","adh2@hotmail.com","Pedro","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO"));
 
