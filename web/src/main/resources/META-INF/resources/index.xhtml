@@ -22,7 +22,7 @@
 
         <p:carousel value="#{inicioBean.ciudades}" var="ciudad" numVisible="3" circular="true" autoplayInterval="9000">
             <div class="card m-2 item-ciudad">
-                <a href="ciudad_hoteles.xhtml?ciudad=#{ciudad.codigo}" >
+                <a href="ciudad_hoteles.xhtml?faces-redirect=true&amp;ciudad_id=#{ciudad.codigo}">
                     <div class="img-ciudad">
                         <img src="#{ciudad.urlImagen}"  alt="Imagen ciudad"/>
                     </div>
