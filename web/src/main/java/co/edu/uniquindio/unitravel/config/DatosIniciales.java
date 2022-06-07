@@ -28,6 +28,9 @@ public class DatosIniciales implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        administradorServicio.crearAdminH(new AdministradorHotel("3884939384","adh@hotmail.com","Sebastian","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO"));
+        administradorServicio.crearAdminH(new AdministradorHotel("4883884838","adh2@hotmail.com","Pedro","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO"));
+
         if(unitravelServicio.listarCiudades().isEmpty()){
 
             administradorServicio.crearCiudad(new Ciudad("Armenia", "https://i.pinimg.com/originals/c2/05/2f/c2052fdeb705be24b21b46f85c989cd2.jpg"));
@@ -49,11 +52,6 @@ public class DatosIniciales implements CommandLineRunner {
             caracteristicaServicio.registrarCaracteristica(new Caracteristica (11,"Refrigerador","2"));
             caracteristicaServicio.registrarCaracteristica(new Caracteristica (12,"Toallas","2"));
             caracteristicaServicio.registrarCaracteristica(new Caracteristica (13,"Kit limpieza","2"));
-
-
-
-            administradorServicio.crearAdminH(new AdministradorHotel("3884939384","adh@hotmail.com","Sebastian","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO"));
-            administradorServicio.crearAdminH(new AdministradorHotel("4883884838","adh2@hotmail.com","Pedro","K82knpdMa+w6Wwo45hO5JyO0nU07g+780xWodDJhQHgSXKprSI4/V0EOxx/iuUcO"));
 
         }
 
