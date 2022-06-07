@@ -34,43 +34,43 @@
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==2}">
-                                <a href="/admin_hoteln_hotel/crear_hotel.xhtml" class="nav-link text-purple">
+                                <a href="/admin_hotel/crear_hotel.xhtml" class="nav-link text-purple">
                                     <i class="pi pi-fw pi-plus-circle bi d-block mx-auto mb-1 icon-menu"></i>
                                     Crear Hotel
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==2}">
-                                <a href="/admin_hoteln_hotel/hoteles_admin.xhtml" class="nav-link text-purple">
+                                <a href="/admin_hotel/hoteles_admin.xhtml" class="nav-link text-purple">
                                     <i class="pi pi-book bi d-block mx-auto mb-1 icon-menu"></i>
                                     Mis Hoteles
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.rol!=2 and seguridadBean.rol!=3}">
-                                <a href="/hoteles.xhtmls.xhtml" class="nav-link text-purple" >
+                                <a href="/hoteles.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-tag bi d-block mx-auto mb-1 icon-menu"></i>
                                     Hoteles
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==3}" >
-                                <a href="/adminp/admin/gestionar_adminh.xhtml" class="nav-link text-purple" >
+                                <a href="/admin/gestionar_adminh.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
                                     Gestionar Administradores Hotel
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==3}" >
-                                <a href="/adminp/admin/gestionar_destinos.xhtml" class="nav-link text-purple" >
+                                <a href="/admin/gestionar_destinos.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-map-marker bi d-block mx-auto mb-1 icon-menu"></i>
                                     Gestionar destinos
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
-                                <a href="/mis_reservas.xhtmls.xhtml" class="nav-link text-purple" >
+                                <a href="/mis_reservas.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-book bi d-block mx-auto mb-1 icon-menu"></i>
                                     Mis reservas
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol==1}" >
-                                <a href="/crear_reservas.xhtmls.xhtml" class="nav-link text-purple" >
+                                <a href="/crear_reservas.xhtml" class="nav-link text-purple" >
                                     <i class="pi pi-fw pi-inbox bi d-block mx-auto mb-1 icon-menu"></i>
                                     Crear Reserva
                                 </a>
@@ -108,7 +108,7 @@
                             <p:outputLabel for="password_login" value="Password:" />
                             <p:password id="password_login" value="#{seguridadBean.password}" required="true" />
                             <p:message for="password_login" />
-                            <a href="/password_reset.xhtmlt.xhtml" >Olvidé mi contraseña</a>
+                            <a href="/password_reset.xhtml" >Olvidé mi contraseña</a>
                         </h:panelGrid>
                         <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesion}" styleClass="mt-4" update="@form" icon="pi pi-sign-in" iconPos="left" /> <p:growl for="login-bean" showDetail="true" />
                     </h:form>
@@ -165,8 +165,9 @@
                         </div>
                         <div class="btn-redes">
                             <ul style="margin-top: 15px" class="nav col-md-4 list-unstyled d-flex">
-                                <li class="me-3"><a class="text-muted" href="#"><i class="pi pi-twitter icon-menu"></i></a></li>
-                                <li> <a class="text-muted" href="#"><i class="pi pi-facebook icon-menu"></i></a></li>
+                                <li class="ms-3"><a class="text-muted" href="https://twitter.com/UniTravel20" target="_blank"><i class="pi pi-twitter icon-menu"></i></a></li>
+                                <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/UniTravel-101677362560501" target="_blank"><i class="pi pi-facebook icon-menu"></i></a></li>
+                                <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/unitravel.company/" target="_blank"><i class="pi pi-instagram icon-menu"></i></a></li>
                             </ul>
                         </div>
                     </h:form>
