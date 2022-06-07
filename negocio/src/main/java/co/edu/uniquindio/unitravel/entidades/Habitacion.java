@@ -79,7 +79,7 @@ public class Habitacion implements Serializable {
                 return fotos.get(0);
             }
         }
-        return "default_hab.png";
+        return "habitacion.png";
     }
 
     public String formatearDinero(){

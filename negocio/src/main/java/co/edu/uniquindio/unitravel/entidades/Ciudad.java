@@ -39,11 +39,12 @@ public class Ciudad implements Serializable{
     private List<Vuelo> vuelosdestino;
 
     @Setter @Getter
-    private String imagen;
+    @Column(nullable = false)
+    private String urlImagen;
 
-    public Ciudad(String nombre, String imagen) {
+    public Ciudad(String nombre, String urlImagen) {
         this.nombre = nombre;
-        this.imagen = imagen;
+        this.urlImagen = urlImagen;
     }
 
     public Ciudad(String nombre) {

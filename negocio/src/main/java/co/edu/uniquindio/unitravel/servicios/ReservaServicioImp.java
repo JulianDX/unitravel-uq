@@ -23,8 +23,7 @@ public class ReservaServicioImp implements ReservaServicio {
     @Override
     public Reserva registrarReserva(Reserva reserva) throws Exception {
 
-        //Se suma el valor del iva 19%
-        reserva.setPrecioTotal(reserva.getPrecioTotal() + (reserva.getPrecioTotal()*19)/100);
+        reserva.setPrecioTotal(reserva.getPrecioTotal() + (reserva.getPrecioTotal()*19)/100); //suma del iva
 
         if (reserva.getFechaInicio().isAfter(reserva.getFechaFin())) {
             throw new Exception("La fecha inicio" + reserva.getFechaInicio() + " es mayor a la fecha fin " + reserva.getFechaFin());
@@ -35,7 +34,6 @@ public class ReservaServicioImp implements ReservaServicio {
         if (reserva.getPrecioTotal() <= 0) {
             throw new Exception("El precio total debe ser mayor a 0");
         }
-        //Se envía el correo electrónico del usuario
         emailServicio.EnviarEmail("Reserva Unitravel", obtenerDescripcionReserva(reserva), reserva.getCliente().getEmail());
 
         return reservaRepo.save(reserva);
@@ -44,7 +42,6 @@ public class ReservaServicioImp implements ReservaServicio {
     @Override
     public Reserva actualizarReserva(Reserva reserva) throws Exception {
 
-        //Se suma el valor del iva 19%
         reserva.setPrecioTotal(reserva.getPrecioTotal() + (reserva.getPrecioTotal()*19)/100);
 
         if (reserva.getFechaInicio().isAfter(reserva.getFechaFin())) {
