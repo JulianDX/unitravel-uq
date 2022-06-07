@@ -35,4 +35,9 @@ public class Caracteristica implements Serializable {
     @ManyToMany(mappedBy = "caracteristicas")
     private List<Habitacion> habitaciones;
 
+    public Caracteristica(int codigo, String nombre, String tipo) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
 }

@@ -41,9 +41,14 @@ public class Ciudad implements Serializable{
     @Setter @Getter
     private String imagen;
 
-    public Ciudad(int codigo, String nombre) {
-        this.codigo = codigo;
+    public Ciudad(String nombre, String imagen) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+    }
+
+    public Ciudad(String nombre) {
         this.nombre = nombre;
     }
+
 
 }

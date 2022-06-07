@@ -19,4 +19,7 @@ public interface AdministradorServicio {
 
     void eliminarCiudad(Ciudad c) throws Exception;
 
+
+
+
 }
