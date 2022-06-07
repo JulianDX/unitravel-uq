@@ -20,7 +20,5 @@ build/
 
 /.gradle
 
-*.properties
-
 /bin
 
