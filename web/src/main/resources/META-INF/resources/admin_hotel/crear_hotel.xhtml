@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</h:head>
+
+<ui:composition template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Crear hotel</ui:define>
+<ui:define name="content">
+
+<h1>Crear hotel</h1>
+
+    <p:panel header="Crear hotel">
+
+            <h:form>
+
+                <h:panelGrid columns="3" cellpadding="5">
+
+                    <p:outputLabel for="nombre_h" value="Nombre:"/>
+                    <p:inputText id="nombre_h" type="text" value="#{hotelBean.hotel.nombre}" required="true"/>
+                    <p:message for="nombre_h" />
+
+                    <p:outputLabel for="direccion_h" value="Dirección:"/>
+                    <p:inputText id="direccion_h" type="text" value="#{hotelBean.hotel.direccion}" required="true"/>
+                    <p:message for="direccion_h" />
+
+                    <p:outputLabel for="ciudad_hotel" value="Ciudad: " />
+                    <p:selectOneMenu  converter="#{ciudadConverter}" id="ciudad_hotel" value="#{hotelBean.hotel.ciudad}" required="true" requiredMessage="La ciudad es obligatoria" >
+                        <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true" /> <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}"
+                                                                                                                  value="#{hotelBean.ciudades}"/>
+                    </p:selectOneMenu>
+                    <p:message for="ciudad_hotel" />
+
+                    <p:outputLabel for="estrellas_h" value="Estrellas:"/>
+                    <p:inputText id="estrellas_h" type="number" value="#{hotelBean.hotel.estrellas}" required="true"/>
+                    <p:message for="estrellas_h" />
+
+                    <p:outputLabel for="telefono_h" value="Teléfono:"/>
+                    <p:inputText id="telefono_h" type="text" value="#{hotelBean.hotel.telefono}" required="true"/>
+                    <p:message for="telefono_h" />
+
+                    <p:outputLabel for="desc_h" value="Descripción:"/>
+                    <p:inputTextarea id="desc_h" type="text" value="#{hotelBean.hotel.descripcion}" required="true"/>
+                    <p:message for="desc_h" />
+
+                    <p:outputLabel for="descuento_h" value="Descuento (Opcional):"/>
+                    <p:inputText id="descuento_h" type="text" />
+                    <p:message for="descuento_h" />
+
+                    <p:outputLabel for="imagenes_hotel" value="Imágenes: " />
+                    <p:fileUpload id="imagenes_hotel"
+                                  listener="#{hotelBean.subirImagenesHotel}" mode="advanced"
+                                  multiple="true" sizeLimit="1000000" fileLimit="5"
+                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
+                    <p:message for="imagenes_hotel" />
+
+
+                    <p:outputLabel for="car" value="Características: " />
+                    <p:selectManyCheckbox  converter="#{caracteristicasConverter}" id="car" value="#{hotelBean.hotel.caracteristicas}" required="true" requiredMessage="Las características son obligatorias" >
+                      <f:selectItems var="car" itemLabel="#{car.nombre}" value="#{hotelBean.caracteristicasHotel}"/>
+                    </p:selectManyCheckbox>
+                    <p:message for="car" />
+
+                </h:panelGrid>
+
+                <p:growl for="msj_bean" showDetail="true"/>
+
+                <p:commandButton value="Adicionar Habitación" icon="pi pi-plus" onclick="PF('crear_habitacion').show()"/>
+
+                <p:commandButton action="#{hotelBean.crearHotel}" value="Crear hotel" update="@form" icon="pi pi-check"/>
+
+            </h:form>
+
+        </p:panel>
+
+        <p:dialog draggable="false" header="Crear Habitación" widgetVar="crear_habitacion" modal="true" showEffect="fade" blockScroll="true" resizable="false">
+                <h:form>
+
+                    <h:panelGrid columns="3" cellpadding="5">
+
+                        <p:outputLabel for="numero_hab" value="Numero:"/>
+                        <p:inputText id="numero_hab" type="text" value="#{hotelBean.habitacion.numero}" required="true"/>
+                        <p:message for="numero_hab" />
+
+                        <p:outputLabel for="capacidad_hab" value="Capacidad:"/>
+                        <p:inputText id="capacidad_hab" type="number" value="#{hotelBean.habitacion.capacidad}" required="true"/>
+                        <p:message for="capacidad_hab" />
+
+                        <p:outputLabel for="precio_hab" value="Precio:"/>
+                        <p:inputText id="precio_hab" type="text" value="#{hotelBean.habitacion.precio}" required="true"/>
+                        <p:message for="precio_hab" />
+
+                        <p:outputLabel for="caract_hotel" value="Características: " />
+                        <p:selectManyCheckbox  converter="#{caracteristicasConverter}" id="caract_hotel" value="#{hotelBean.habitacion.caracteristicas}" required="true" requiredMessage="Las características son obligatorias" >
+                            <f:selectItems var="car_hab" itemLabel="#{car_hab.nombre}" value="#{hotelBean.caracteristicasHabitacion}"/>
+                        </p:selectManyCheckbox>
+                        <p:message for="caract_hotel" />
+
+                        <p:outputLabel for="imagenes_hab" value="Imágenes: " />
+                        <p:fileUpload id="imagenes_hab"
+                                      listener="#{hotelBean.subirImagenesHabitacion}" mode="advanced"
+                                      multiple="true" sizeLimit="1000000" fileLimit="5"
+                                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true" />
+                        <p:message for="imagenes_hab" />
+
+                    </h:panelGrid>
+
+                    <p:growl for="msj_bean" showDetail="true"/>
+
+                    <p:commandButton action="#{hotelBean.crearHabitacion}" value="Crear habitación" update="@form" icon="pi pi-check"/>
+
+                </h:form>
+        </p:dialog>
+    </ui:define>
+</ui:composition>
+</html>

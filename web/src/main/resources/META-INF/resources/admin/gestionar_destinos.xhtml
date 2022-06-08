@@ -8,23 +8,23 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Página de Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </h:head>
 
 <ui:composition template="/WEB-INF/template.xhtml">
-
+    <ui:define name="title">Gestionar destino</ui:define>
     <ui:define name="content">
 
         <div id="content">
 
-            <h1>Gestión | Administradores Hotel</h1>
+            <h1>Gestión | Destinos</h1>
 
             <h:form>
 
-                <p:commandButton value="Añadir administrador de hotel " styleClass="ui-button-raised mt-3 mb-4"
-                                 icon="pi pi-plus" iconPos="right" action="#{administradorBean.irCrearAdminH()}" update="@form"/>
+                <p:commandButton value="Añadir destino " styleClass="ui-button-raised mt-3 mb-4"
+                                 icon="pi pi-plus" iconPos="right" action="#{ciudadBean.irCrearCiudad}" update="@form"/>
 
-                <p:dataView id="lista_h" value="#{administradorBean.adminsHotel}" var="admin_hotel" listIcon="pi pi-bars" gridIcon="pi pi-th-large">
+                <p:dataView id="lista_h" value="#{ciudadBean.ciudades}" var="ciudad" listIcon="pi pi-bars" gridIcon="pi pi-th-large">
 
 
                     <p:dataViewListItem>
@@ -32,30 +32,24 @@
 
                         <div class="row d-flex m-5" >
                             <div class="col-lg-2 col-md-1" style="text-align: center" >
-                                <img src="/uploads/persona.png" class="imagen-hotel" alt="imagen_hotel" />
+                                <img src="../resources/img#{ciudad.imagen}" class="imagen-hotel" alt="imagen_hotel" />
                             </div>
                             <div class="col-lg-8 col-md-1 align-self-center" >
                                 <p:outputPanel>
                                     <h:panelGrid columns="2" cellpadding="5" >
                                         <h:outputText value="Nombre:" />
-                                        <h:outputText value="#{admin_hotel.nombre}" style="font-weight: bold" />
-                                        <h:outputText value="Contraseña:" />
-                                        <h:outputText value="#{admin_hotel.password}" style="font-weight: bold" />
-                                        <h:outputText value="E-mail:" />
-                                        <h:outputText value="#{admin_hotel.email}" />
-                                        <h:outputText value="Cédula:" />
-                                        <h:outputText value="#{admin_hotel.cedula}" />
+                                        <h:outputText value="#{ciudad.nombre}" style="font-weight: bold" />
                                     </h:panelGrid>
                                 </p:outputPanel>
                             </div>
+
                             <div class="col-lg-2 col-md-1 align-self-center" >
                                 <p:commandButton value="Modificar" styleClass="ui-button-raised"
-                                                 icon="pi pi-arrow-right" iconPos="right" action="#{administradorBean.irModificarAdminH(admin_hotel.cedula)}" />
+                                                 icon="pi pi-arrow-right" iconPos="right" action="#{ciudadBean.irModificarCiudad(ciudad)}" />
                                 <p:commandButton value="Eliminar " styleClass="ui-button-raised mt-3"
-                                                 icon="pi pi-times" iconPos="right" action="#{administradorBean.eliminarAdminH(admin_hotel)}" update="@form"/>
+                                                 icon="pi pi-times" iconPos="right" action="#{ciudadBean.eliminarCiudad(ciudad)}" update="@form"/>
                                 <p:growl for="msj_bean" showDetail="true"/>
                             </div>
-
 
                         </div>
 
